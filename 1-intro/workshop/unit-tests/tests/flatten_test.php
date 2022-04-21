@@ -6,7 +6,7 @@ require_once('./src/flatten.php');
 
 class FlattenTest extends TestCase
 {
-    public function testFlattenSuccess(): void
+    public function testFlattenTwoDimensionsArraySuccess(): void
     {
         $input = [
             [0, 1],
@@ -14,6 +14,22 @@ class FlattenTest extends TestCase
             [4, 5],
             [6, 7],
             [8, 9],
+        ];
+
+        $result = flatten($input);
+        $expectedResult = range(0, 9);
+
+        $this->assertNotEquals($expectedResult, $input);
+        $this->assertIsArray($result);
+        $this->assertCount(10, $result);
+        $this->assertEquals($expectedResult, $result);
+    }
+
+    public function testFlattenMultiDimensionalArraySuccess(): void
+    {
+        $input = [
+            [0, 1, [2, 3]],
+            [[4], 5, [6, 7, 8, [9]]],
         ];
 
         $result = flatten($input);
