@@ -1,5 +1,10 @@
 # Programme
 
+## Contributors
+
+[@matteolecuit](https://github.com/matteolecuit)
+[@MathisLeRoyNivot](https://github.com/MathisLeRoyNivot)
+
 ===================================
 ## J.1 les tests en général
 
