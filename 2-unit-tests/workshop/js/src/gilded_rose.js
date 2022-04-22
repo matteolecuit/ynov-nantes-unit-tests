@@ -2,7 +2,7 @@ class Item {
   constructor(name, sellIn, quality){
     this.name = name;
     this.sellIn = sellIn;
-    this.quality = quality;
+    this.quality = quality > 50 ? 50 : quality;
   }
 }
 
