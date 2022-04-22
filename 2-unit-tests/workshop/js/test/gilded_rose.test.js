@@ -1,10 +1,10 @@
-const {Shop, Item} = require("../src/gilded_rose");
+const { Shop, Item } = require("../src/gilded_rose");
 
 describe("Gilded Rose", function() {
   it("should foo", function() {
     const gildedRose = new Shop([new Item("foo", 0, 0)]);
     const items = gildedRose.updateQuality();
-    expect(items[0].name).toBe("fixme");
+    expect(items[0].name).toBe("foo");
   });
 });
 
@@ -13,11 +13,9 @@ describe("Gilded Rose", function() {
  */
 
 
-
 /** 
  * All products have 'quality' property which defines how the product is precious
  */
-
 
 
 /** 
@@ -25,11 +23,9 @@ describe("Gilded Rose", function() {
  */
 
 
-
 /** 
  * Once the consumption date is expired, the quality is deteriorating 2 times faster 
  */
-
 
 
 /**
@@ -37,23 +33,36 @@ describe("Gilded Rose", function() {
  */
 
 
-
 /**
  * "Aged Brie" inscrease its quality as time passes
  */
 
 
-
 /**
  * The product quality never exceeds 50
  */
+ const maxProductsQuality = [
+  {
+    item: new Item("Aged Brie", 10, 50),
+    expectedQuality: 50,
+  },
+  {
+    item: new Item("St Nectaire", 10, 80),
+    expectedQuality: 49,
+  }
+];
 
-
+describe.each(maxProductsQuality)("Max quality", (data) => {
+  test(`Item quality of ${data.item.quality} should be ${data.expectedQuality}`, () => {
+    const gildedRose = new Shop([data.item]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(data.expectedQuality);  
+  });
+});
 
 /**
  * "Sulfuras", a legendary item, don't have expiration date and never lose quality
  */
-
 
 
 /**
