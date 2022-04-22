@@ -1,57 +1,77 @@
+const {
+  nonPerishableItemNames,
+  legendaryItemNames,
+  MAX_LEGENDARY_QUALITY,
+  MAX_NON_LEGENDARY_QUALITY,
+} = require("./constants");
+
 class Item {
-  constructor(name, sellIn, quality){
+  constructor(name, sellIn, quality) {
     this.name = name;
     this.sellIn = sellIn;
-    this.quality = quality > 50 ? 50 : quality;
+    this.quality = quality;
   }
 }
 
 class Shop {
-  constructor(items=[]){
+  constructor(items = []) {
     this.items = items;
   }
   updateQuality() {
     for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
+      if (this.items[i].quality < 0) this.items[i].quality = 0;
+      // Perishable
+      if (!Object.values(nonPerishableItemNames).includes(this.items[i].name)) {
+        if (Object.values(legendaryItemNames).includes(this.items[i].name)) {
+          // Set max for legendary item
+          if (this.items[i].quality > MAX_LEGENDARY_QUALITY) {
+            this.items[i].quality = MAX_LEGENDARY_QUALITY;
+          }
+        } else {
+          // Set max for non legendary item
+          if (this.items[i].quality > MAX_NON_LEGENDARY_QUALITY) {
+            this.items[i].quality = MAX_NON_LEGENDARY_QUALITY;
+          }
+        }
+
         if (this.items[i].quality > 0) {
-          if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
+          if (!Object.values(legendaryItemNames).includes(this.items[i].name)) {
             this.items[i].quality = this.items[i].quality - 1;
           }
         }
       } else {
-        if (this.items[i].quality < 50) {
+        // Non-perishable
+        if (this.items[i].quality < MAX_NON_LEGENDARY_QUALITY) {
           this.items[i].quality = this.items[i].quality + 1;
-          if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
+          if (this.items[i].name == nonPerishableItemNames.backstage) {
             if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
+              if (this.items[i].quality < MAX_NON_LEGENDARY_QUALITY) {
                 this.items[i].quality = this.items[i].quality + 1;
               }
             }
             if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
+              if (this.items[i].quality < MAX_NON_LEGENDARY_QUALITY) {
                 this.items[i].quality = this.items[i].quality + 1;
               }
             }
           }
+        } else {
+          this.items[i].quality = MAX_NON_LEGENDARY_QUALITY;
         }
       }
-      if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
+      if (!Object.values(legendaryItemNames).includes(this.items[i].name)) {
         this.items[i].sellIn = this.items[i].sellIn - 1;
       }
       if (this.items[i].sellIn < 0) {
-        if (this.items[i].name != 'Aged Brie') {
-          if (this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-            if (this.items[i].quality > 0) {
-              if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                this.items[i].quality = this.items[i].quality - 1;
-              }
-            }
-          } else {
-            this.items[i].quality = this.items[i].quality - this.items[i].quality;
-          }
-        } else {
-          if (this.items[i].quality < 50) {
+        if (this.items[i].name == nonPerishableItemNames.agedBrie) {
+          if (this.items[i].quality < MAX_NON_LEGENDARY_QUALITY) {
             this.items[i].quality = this.items[i].quality + 1;
+          }
+        } else if (this.items[i].name == nonPerishableItemNames.backstage) {
+          this.items[i].quality = this.items[i].quality - this.items[i].quality;
+        } else if (this.items[i].quality > 0) {
+          if (this.items[i].name != legendaryItemNames.sulfuras) {
+            this.items[i].quality = this.items[i].quality - 1;
           }
         }
       }
@@ -63,5 +83,5 @@ class Shop {
 
 module.exports = {
   Item,
-  Shop
-}
+  Shop,
+};
