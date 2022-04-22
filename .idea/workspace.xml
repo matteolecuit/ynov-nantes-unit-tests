@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5392d35d-bb91-4cf5-8aa2-d1ada07d2346" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="286RAq7fLkwpOeHNgtBs2pxZPuM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5392d35d-bb91-4cf5-8aa2-d1ada07d2346" name="Default Changelist" comment="" />
+      <created>1650534909536</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650534909536</updated>
+      <workItem from="1650534911447" duration="7429000" />
+    </task>
+    <task id="LOCAL-00001" summary="Workshop add tests to 1-intro/unit-tests/tests/flatten_test.php">
+      <created>1650538885994</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1650538885994</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Workshop add tests to 1-intro/workshop/e2e-tests/tests/some_test.js">
+      <created>1650538978654</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650538978654</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adding AUTHORS.md file">
+      <created>1650539406578</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650539406578</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fix AUTHORS.md file">
+      <created>1650539448115</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650539448115</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Workshop update 1-intro/unit-tests/tests/flatten_test.php &amp; 1-intro/unit-tests/tests/TempTrackerTest.php">
+      <created>1650542075515</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650542075515</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Workshop add tests to 1-intro/unit-tests/tests/flatten_test.php" />
+    <MESSAGE value="Workshop add tests to 1-intro/workshop/e2e-tests/tests/some_test.js" />
+    <MESSAGE value="Adding AUTHORS.md file" />
+    <MESSAGE value="Fix AUTHORS.md file" />
+    <MESSAGE value="Workshop update 1-intro/unit-tests/tests/flatten_test.php &amp; 1-intro/unit-tests/tests/TempTrackerTest.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workshop update 1-intro/unit-tests/tests/flatten_test.php &amp; 1-intro/unit-tests/tests/TempTrackerTest.php" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1844" y="207" key="CommitChangelistDialog2" timestamp="1650542075426">
+      <screen x="0" y="25" width="3440" height="1358" />
+    </state>
+    <state x="1844" y="207" key="CommitChangelistDialog2/3440.25.2560.1415/0.25.3440.1358@0.25.3440.1358" timestamp="1650542075426" />
+    <state x="1987" y="337" key="SettingsEditor" timestamp="1650540869019">
+      <screen x="0" y="25" width="3440" height="1358" />
+    </state>
+    <state x="1987" y="337" key="SettingsEditor/3440.25.2560.1415/0.25.3440.1358@0.25.3440.1358" timestamp="1650540869019" />
+    <state x="2079" y="435" key="Vcs.Push.Dialog.v2" timestamp="1650542077212">
+      <screen x="0" y="25" width="3440" height="1358" />
+    </state>
+    <state x="2079" y="435" key="Vcs.Push.Dialog.v2/3440.25.2560.1415/0.25.3440.1358@0.25.3440.1358" timestamp="1650542077212" />
+    <state x="2179" y="310" width="600" height="783" key="find.popup" timestamp="1650536286927">
+      <screen x="0" y="25" width="3440" height="1358" />
+    </state>
+    <state x="2179" y="310" width="600" height="783" key="find.popup/3440.25.2560.1415/0.25.3440.1358@0.25.3440.1358" timestamp="1650536286927" />
+  </component>
+</project>
