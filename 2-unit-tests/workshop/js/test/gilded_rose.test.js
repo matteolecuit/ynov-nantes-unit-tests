@@ -36,7 +36,32 @@ describe("Gilded Rose", function() {
 /**
  * "Aged Brie" inscrease its quality as time passes
  */
+ const agedBrie = [
+  {
+    item: new Item("Aged Brie", 10, 4),
+    qualityExpected: 5,
+  },
+  {
+    item: new Item("Aged Brie", 10, 23),
+    qualityExpected: 24,
+  },
+  {
+    item: new Item("Aged Brie", 10, 0),
+    qualityExpected: 1,
+  },
+  {
+    item: new Item("Aged Brie", 10, 46),
+    qualityExpected: 47,
+  },
+];
 
+describe.each(agedBrie)(`Aged Brie's quality improvement over time`, (data) => {
+  test(`Aged Brie item quality of ${data.item.quality} should be upgraded to ${data.qualityExpected}`, () => {
+    const gildedRose = new Shop([data.item]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(data.qualityExpected);  
+  });
+});
 
 /**
  * The product quality never exceeds 50
