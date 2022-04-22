@@ -9,7 +9,8 @@ class Item {
   constructor(name, sellIn, quality) {
     this.name = name;
     this.sellIn = sellIn;
-    this.quality = quality;
+    if (Object.values(legendaryItemNames).includes(name)) this.quality = quality > MAX_LEGENDARY_QUALITY ? MAX_LEGENDARY_QUALITY : quality;
+    else this.quality = quality > MAX_NON_LEGENDARY_QUALITY ? MAX_NON_LEGENDARY_QUALITY : quality;
   }
 }
 
@@ -22,18 +23,6 @@ class Shop {
       if (this.items[i].quality < 0) this.items[i].quality = 0;
       // Perishable
       if (!Object.values(nonPerishableItemNames).includes(this.items[i].name)) {
-        if (Object.values(legendaryItemNames).includes(this.items[i].name)) {
-          // Set max for legendary item
-          if (this.items[i].quality > MAX_LEGENDARY_QUALITY) {
-            this.items[i].quality = MAX_LEGENDARY_QUALITY;
-          }
-        } else {
-          // Set max for non legendary item
-          if (this.items[i].quality > MAX_NON_LEGENDARY_QUALITY) {
-            this.items[i].quality = MAX_NON_LEGENDARY_QUALITY;
-          }
-        }
-
         if (this.items[i].quality > 0) {
           if (!Object.values(legendaryItemNames).includes(this.items[i].name)) {
             this.items[i].quality = this.items[i].quality - 1;
