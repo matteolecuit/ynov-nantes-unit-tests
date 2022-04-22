@@ -29,41 +29,11 @@ const negativeQualityData = [
   },
 ];
 
-describe.each(negativeQualityData)(
-  `Quality degradation not negative`,
-  (data) => {
-    test(`Item quality of ${data.item.quality} should be greater or equal to ${data.qualityExpected}`, () => {
-      const gildedRose = new Shop([data.item]);
-      const items = gildedRose.updateQuality();
-      expect(items[0].quality).toBeGreaterThanOrEqual(data.qualityExpected);
-    });
-  }
-);
-
-const agedBrieData = [
-  {
-    item: new Item(nonPerishableItemNames.agedBrie, 10, 0),
-    qualityExpected: 1,
-  },
-  {
-    item: new Item(nonPerishableItemNames.agedBrie, 10, 1),
-    qualityExpected: 2,
-  },
-  {
-    item: new Item(nonPerishableItemNames.agedBrie, 10, 49),
-    qualityExpected: 50,
-  },
-  {
-    item: new Item(nonPerishableItemNames.agedBrie, 10, 60),
-    qualityExpected: 50,
-  },
-];
-
-describe.each(agedBrieData)(`Aged Brie's quality improvement`, (data) => {
-  test(`Aged Brie item quality of ${data.item.quality} should be upgraded to  ${data.qualityExpected}`, () => {
+describe.each(negativeQualityData)(`Quality degradation`, (data) => {
+  test(`Item quality of ${data.item.quality} should be greater or equal to ${data.qualityExpected}`, () => {
     const gildedRose = new Shop([data.item]);
     const items = gildedRose.updateQuality();
-    expect(items[0].quality).toBe(data.qualityExpected);
+    expect(items[0].quality).toBeGreaterThanOrEqual(data.qualityExpected);
   });
 });
 
@@ -74,7 +44,7 @@ const maxQualityData = [
   },
 ];
 
-describe.each(maxQualityData)(`Max Quality of 50`, (data) => {
+describe.each(maxQualityData)(`Max Quality`, (data) => {
   test(`Item quality of ${data.item.quality} should be  ${data.qualityExpected}`, () => {
     const gildedRose = new Shop([data.item]);
     const items = gildedRose.updateQuality();
@@ -110,6 +80,33 @@ describe.each(sulfurasData)("Sulfuras", (data) => {
     const gildedRose = new Shop([data.item]);
     const items = gildedRose.updateQuality();
     expect(items[0].sellIn).toEqual(data.sellInExpected);
+  });
+});
+
+const agedBrieData = [
+  {
+    item: new Item(nonPerishableItemNames.agedBrie, 10, 0),
+    qualityExpected: 1,
+  },
+  {
+    item: new Item(nonPerishableItemNames.agedBrie, 10, 1),
+    qualityExpected: 2,
+  },
+  {
+    item: new Item(nonPerishableItemNames.agedBrie, 10, 49),
+    qualityExpected: 50,
+  },
+  {
+    item: new Item(nonPerishableItemNames.agedBrie, 10, 60),
+    qualityExpected: 50,
+  },
+];
+
+describe.each(agedBrieData)(`Aged Brie`, (data) => {
+  test(`Aged Brie item quality of ${data.item.quality} should be upgraded to  ${data.qualityExpected}`, () => {
+    const gildedRose = new Shop([data.item]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).toBe(data.qualityExpected);
   });
 });
 
