@@ -22,9 +22,12 @@ const inputInitData = [
 describe.each(inputInitData)("Init minesweeper board", (data) => {
   test(`Board should have ${data.rows} rows and ${data.columns} columns`, () => {
     const board = initMinesweeperBoard(data.rows, data.columns);
+    console.log("🦕 -> file: index.test.js -> line 25 -> test -> board", board);
     expect(board.length).toBe(data.columns);
     board.forEach((column) => {
-      expect(column.length).toBe(data.rows);
+      for (const item of column) {
+        expect(item).not.toBe(null);
+      }
     });
   });
 });

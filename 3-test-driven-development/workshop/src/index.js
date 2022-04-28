@@ -4,7 +4,7 @@ const initMinesweeperBoard = (rows, columns) => {
     board.push([]);
 
     for (let j = 0; j < rows; j++) {
-      board[i].push([]);
+      board[i].push("");
     }
   }
   return board;
