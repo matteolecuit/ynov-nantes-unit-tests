@@ -1,4 +1,8 @@
-const { initMinesweeperBoard, minesweeperBoardReader } = require("../src");
+const {
+  initMinesweeperBoard,
+  minesweeperBoardReader,
+  getSurroundingMines,
+} = require("../src");
 const { itemSet } = require("../src/constants");
 
 const inputInitData = [
@@ -49,12 +53,12 @@ const inputCheckBoard = [
   },
 ];
 
-describe.each(inputCheckBoard)("items should display hints", (data) => {
+describe.each(inputCheckBoard)("get surrounding mines", (data) => {
   test(`${data.board} should return ${data.expectResults}`, () => {
     for (let x = 0; x < data.board.length; x++) {
       const column = data.board[x];
       for (let y = 0; y < column.length; y++) {
-        expect(minesweeperBoardReader(data.board, x, y)).toBe(
+        expect(getSurroundingMines(data.board, x, y)).toBe(
           data.expectedBoard[x][y]
         );
       }
