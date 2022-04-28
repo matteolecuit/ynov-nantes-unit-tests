@@ -14,6 +14,11 @@ const populateItem = (chanceOfMinesAppearing = 0.1) => {
   return Math.random() > chanceOfMinesAppearing ? itemSet.empty : itemSet.mine;
 };
 
+const minesweeperBoardReader = (minesweeperBoard, x, y) => {
+  return [];
+};
+
 module.exports = {
   initMinesweeperBoard,
+  minesweeperBoardReader,
 };
