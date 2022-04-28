@@ -1,6 +1,32 @@
 const deepCopy = require("deepcopy");
 const { itemSet } = require("./constants");
 
+const initMinesweeperBoardFromTemplate = (data) => {
+  if (data.length < 1) return;
+
+  const [boardNbRows, boardNbCols] = getOneBoardConfig(data, 0);
+  console.log(boardNbCols, boardNbRows);
+  let board = [];
+  for (let i = 0; i < boardNbRows; i++) {
+    board.push(getRowFromString(data[i + 1], boardNbCols));
+  }
+  console.log(board);
+  return board;
+};
+
+const getRowFromString = (rowAsString, nbOfColumns) => {
+  console.log(rowAsString.length, nbOfColumns);
+  if (rowAsString.length !== nbOfColumns) throw "Unexpected row data";
+  return rowAsString;
+};
+
+const getOneBoardConfig = (data, index) => {
+  const config = data[index].split(" ");
+  let rows = Number(config[0] || 0);
+  let columns = Number(config[1] || 0);
+  return [rows, columns];
+};
+
 const initMinesweeperBoard = (rows, columns) => {
   const probability = 0.3;
   return new Array(columns).fill([]).map((x) => {
@@ -41,14 +67,14 @@ const getSurroundingMines = (board, x, y) => {
 };
 
 const getItem = (board, x, y) => {
-  if (x >= 0 && y >= 0 && x <= board.length - 1 && y <= board[0].length - 1) {
-    return board[x][y];
-  }
-  return undefined;
+  return x >= 0 && y >= 0 && x <= board.length - 1 && y <= board[0].length - 1
+    ? board[x][y]
+    : undefined;
 };
 
 module.exports = {
   initMinesweeperBoard,
   minesweeperBoardReader,
   getSurroundingMines,
+  initMinesweeperBoardFromTemplate,
 };
