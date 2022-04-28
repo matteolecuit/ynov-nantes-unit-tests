@@ -1,0 +1,13 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "https://codingdojo.org/kata/Minesweeper/",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
