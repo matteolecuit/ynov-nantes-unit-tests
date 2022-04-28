@@ -15,13 +15,16 @@ const populateItem = (chanceOfMinesAppearing = 0.1) => {
   return Math.random() > chanceOfMinesAppearing ? itemSet.empty : itemSet.mine;
 };
 
-const minesweeperBoardReader = (minesweeperBoard, x, y) => {
-  if (minesweeperBoard[x][y] === itemSet.mine) return itemSet.mine;
-
-  for (let i = 0; i < minesweeperBoard.length; i++) {
-    for (let j = 0; j < minesweeperBoard[i].length; j++) {}
+const minesweeperBoardReader = (inputBoard) => {
+  let answerBoard = inputBoard;
+  for (let i = 0; i < inputBoard.length; i++) {
+    for (let j = 0; j < inputBoard[i].length; j++) {
+      if (inputBoard[i][j] != itemSet.mine) {
+        answerBoard[i][j] = getSurroundingMines(inputBoard, i, j);
+      }
+    }
   }
-  return;
+  return answerBoard;
 };
 
 const getSurroundingMines = (board, x, y) => {
