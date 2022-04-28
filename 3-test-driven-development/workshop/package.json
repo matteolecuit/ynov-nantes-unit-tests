@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "deepcopy": "^2.1.0"
   }
 }

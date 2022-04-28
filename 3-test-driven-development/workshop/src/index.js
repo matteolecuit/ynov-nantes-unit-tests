@@ -1,3 +1,4 @@
+const deepCopy = require("deepcopy");
 const { itemSet } = require("./constants");
 
 const initMinesweeperBoard = (rows, columns) => {
@@ -16,7 +17,7 @@ const populateItem = (chanceOfMinesAppearing = 0.1) => {
 };
 
 const minesweeperBoardReader = (inputBoard) => {
-  let answerBoard = inputBoard;
+  let answerBoard = deepCopy(inputBoard);
   for (let i = 0; i < inputBoard.length; i++) {
     for (let j = 0; j < inputBoard[i].length; j++) {
       if (inputBoard[i][j] != itemSet.mine) {
@@ -30,8 +31,8 @@ const minesweeperBoardReader = (inputBoard) => {
 const getSurroundingMines = (board, x, y) => {
   if (board[x][y] === itemSet.mine) return itemSet.mine;
   let counter = 0;
-  for (let i = -1; i !== 1; i++) {
-    for (let j = -1; j !== 1; j++) {
+  for (let i = -1; i <= 1; i++) {
+    for (let j = -1; j <= 1; j++) {
       const item = getItem(board, x + i, y + j);
       if (item == itemSet.mine) counter++;
     }
@@ -40,8 +41,9 @@ const getSurroundingMines = (board, x, y) => {
 };
 
 const getItem = (board, x, y) => {
-  if (x >= 0 && y >= 0 && x <= board.length && y <= board[0].length)
+  if (x >= 0 && y >= 0 && x <= board.length - 1 && y <= board[0].length - 1) {
     return board[x][y];
+  }
   return undefined;
 };
 

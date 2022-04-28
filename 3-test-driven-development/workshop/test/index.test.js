@@ -41,14 +41,42 @@ test("board should have valid items", () => {
 const inputSurroundingMines = [
   {
     board: [
-      ["*", ".", "."],
+      [".", "."],
+      ["*", "."],
+    ],
+    expectedBoard: [
+      ["1", "1"],
+      ["*", "1"],
+    ],
+  },
+  {
+    board: [
       [".", ".", "."],
+      [".", ".", "*"],
+      ["*", ".", "."],
       [".", ".", "."],
     ],
     expectedBoard: [
-      ["*", "1", "0"],
+      ["0", "1", "1"],
+      ["1", "2", "*"],
+      ["*", "2", "1"],
       ["1", "1", "0"],
-      ["0", "0", "0"],
+    ],
+  },
+  {
+    board: [
+      ["*", ".", ".", ".", ".", "."],
+      ["*", ".", ".", ".", ".", "."],
+      [".", ".", "*", "*", "*", "*"],
+      [".", ".", ".", ".", ".", "*"],
+      [".", ".", ".", ".", ".", "."],
+    ],
+    expectedBoard: [
+      ["*", "2", "0", "0", "0", "0"],
+      ["*", "3", "2", "3", "3", "2"],
+      ["1", "2", "*", "*", "*", "*"],
+      ["0", "1", "2", "3", "4", "*"],
+      ["0", "0", "0", "0", "1", "1"],
     ],
   },
 ];
@@ -56,7 +84,7 @@ const inputSurroundingMines = [
 describe.each(inputSurroundingMines)(
   "get surrounding mines one by one",
   (data) => {
-    test(`${data.board} should return ${data.expectResults}`, () => {
+    test(`${data.board} should return ${data.expectedBoard}`, () => {
       for (let x = 0; x < data.board.length; x++) {
         const column = data.board[x];
         for (let y = 0; y < column.length; y++) {
@@ -72,6 +100,30 @@ describe.each(inputSurroundingMines)(
 const inputBoardHints = [
   {
     board: [
+      [".", "."],
+      ["*", "."],
+    ],
+    expectedBoard: [
+      ["1", "1"],
+      ["*", "1"],
+    ],
+  },
+  {
+    board: [
+      [".", ".", "."],
+      [".", ".", "*"],
+      ["*", ".", "."],
+      [".", ".", "."],
+    ],
+    expectedBoard: [
+      ["0", "1", "1"],
+      ["1", "2", "*"],
+      ["*", "2", "1"],
+      ["1", "1", "0"],
+    ],
+  },
+  {
+    board: [
       ["*", ".", "."],
       [".", ".", "."],
       [".", ".", "."],
@@ -82,11 +134,32 @@ const inputBoardHints = [
       ["0", "0", "0"],
     ],
   },
+  {
+    board: [
+      ["*", ".", ".", ".", ".", "."],
+      ["*", ".", ".", ".", ".", "."],
+      [".", ".", "*", "*", "*", "*"],
+      [".", ".", ".", ".", ".", "*"],
+      [".", ".", ".", ".", ".", "."],
+    ],
+    expectedBoard: [
+      ["*", "2", "0", "0", "0", "0"],
+      ["*", "3", "2", "3", "3", "2"],
+      ["1", "2", "*", "*", "*", "*"],
+      ["0", "1", "2", "3", "4", "*"],
+      ["0", "0", "0", "0", "1", "1"],
+    ],
+  },
 ];
 
 describe.each(inputBoardHints)("get whole board hints", (data) => {
   test(`${data.board} should return ${data.expectedBoard}`, () => {
+    console.log(data.board);
     const board = minesweeperBoardReader(data.board);
+    console.log(
+      "🦕 -> file: index.test.js -> line 173 -> test -> board",
+      board
+    );
     expect(board).toEqual(data.expectedBoard);
   });
 });
