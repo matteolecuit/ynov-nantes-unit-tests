@@ -3,6 +3,7 @@ const {
   minesweeperBoardReader,
   getSurroundingMines,
   initMinesweeperBoardFromTemplate,
+  generateBoardFromBoardAsString,
 } = require("../src");
 const { itemSet } = require("../src/constants");
 
@@ -170,6 +171,25 @@ const inputInitFromTemplate = [
 describe.each(inputInitFromTemplate)("init board from template", (data) => {
   test(`${data.input} should output ${data.expectedOutput}`, () => {
     const output = initMinesweeperBoardFromTemplate(data.input);
+    expect(output).toEqual(data.expectedOutput);
+  });
+});
+
+const inputBoardAsString = [
+  {
+    input: ["*...", "....", ".*..", "...."],
+    expectedOutput: [
+      ["*", ".", ".", "."],
+      [".", ".", ".", "."],
+      [".", "*", ".", "."],
+      [".", ".", ".", "."],
+    ],
+  },
+];
+
+describe.each(inputBoardAsString)("init board from template", (data) => {
+  test.only(`${data.input} should output ${data.expectedOutput}`, () => {
+    const output = generateBoardFromBoardAsString(data.input);
     expect(output).toEqual(data.expectedOutput);
   });
 });

@@ -42,6 +42,14 @@ const populateItem = (chanceOfMinesAppearing = 0.1) => {
   return Math.random() > chanceOfMinesAppearing ? itemSet.empty : itemSet.mine;
 };
 
+const generateBoardFromBoardAsString = (data) => {
+  const outputBoard = [];
+  data.forEach((row) => {
+    outputBoard.push(row.split(""));
+  });
+  return outputBoard;
+};
+
 const minesweeperBoardReader = (inputBoard) => {
   let answerBoard = deepCopy(inputBoard);
   for (let i = 0; i < inputBoard.length; i++) {
@@ -77,4 +85,5 @@ module.exports = {
   minesweeperBoardReader,
   getSurroundingMines,
   initMinesweeperBoardFromTemplate,
+  generateBoardFromBoardAsString,
 };
