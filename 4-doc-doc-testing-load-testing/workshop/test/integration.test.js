@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { ToDo } = require("../toDoModel");
 
 beforeAll(() => {
-  const DB_URI = "mongodb://mongo:27017/toDoApp";
+  const DB_URI = "mongodb://localhost:27017/toDoApp";
   mongoose
     .connect(DB_URI, { useUnifiedTopology: true })
     .then(() => console.log("MongoDB Connected"))
